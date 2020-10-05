@@ -8,7 +8,7 @@ typedef struct LNode
 	struct LNode *next;
 }LNode,*LinkList;
 
-bool InitList(LinkList &L)  //´øÍ·½áµãµÄµ¥Á´±íµÄ³õÊ¼»¯
+bool InitList(LinkList &L)  //å¸¦å¤´ç»“ç‚¹çš„å•é“¾è¡¨çš„åˆå§‹åŒ–
 {
 	L = (LinkList)malloc(sizeof(LNode));
 	if (L == NULL)
@@ -17,14 +17,14 @@ bool InitList(LinkList &L)  //´øÍ·½áµãµÄµ¥Á´±íµÄ³õÊ¼»¯
 	return true;
 }
 
-LinkList List_HeadInsert(LinkList& L) //Í·²å·¨½¨Á¢µ¥Á´±í
+LinkList List_HeadInsert(LinkList& L) //å¤´æ’æ³•å»ºç«‹å•é“¾è¡¨
 {
 	LNode* s;
 	int x;
 	L = (LNode*)malloc(sizeof(LNode));
 	L->next = NULL;;
 	scanf_s("%d", &x);
-	while (x != 9999)  //ÊäÈë9999Ê±ÍË³ö
+	while (x != 9999)  //è¾“å…¥9999æ—¶é€€å‡º
 	{
 		s = (LinkList)malloc(sizeof(LNode));
 		s->next = L->next;
@@ -35,12 +35,12 @@ LinkList List_HeadInsert(LinkList& L) //Í·²å·¨½¨Á¢µ¥Á´±í
 	return L;
 }
 
-LinkList List_TailInsert(LinkList& L) //Î²²å·¨½¨Á¢µ¥Á´±í
+LinkList List_TailInsert(LinkList& L) //å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨
 {
 	LNode* s,*r=L;
 	int x;
 	L = (LNode*)malloc(sizeof(LNode));
-	while (x != 9999) //ÊäÈë9999ÍË³ö
+	while (x != 9999) //è¾“å…¥9999é€€å‡º
 	{
 		s = (LNode*)malloc(sizeof(LNode));
 		s->data = x;
@@ -53,7 +53,7 @@ LinkList List_TailInsert(LinkList& L) //Î²²å·¨½¨Á¢µ¥Á´±í
 	
 }
 
-LNode* GetElem(LNode* L, int i)  //·µ»ØµÚi¸ö½ÚµãµÄÖµ
+LNode* GetElem(LNode* L, int i)  //è¿”å›žç¬¬iä¸ªèŠ‚ç‚¹çš„å€¼
 {
 	int j = 0;
 	LinkList p;
@@ -67,10 +67,16 @@ LNode* GetElem(LNode* L, int i)  //·µ»ØµÚi¸ö½ÚµãµÄÖµ
 	return p;
 }
 
-LNode* LocateElem(LinkList* L, int e)
+LNode* LocateElem(LinkList L, int e) //è¿”å›žæ•°æ®eçš„èŠ‚ç‚¹
 {
-	
+	LinkList p;
+	p = L->next;
+	while (p->data != e&&p!=NULL)
+		p = p->next;
+	return p;
 }
+
+
 
 void main()
 {
